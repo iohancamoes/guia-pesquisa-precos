@@ -137,7 +137,8 @@ a:hover{color:var(--gold2)}
 .steps{display:flex;flex-direction:column;margin:22px 0}
 .stp{display:flex;gap:18px}
 .stp-l{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
-.stp-d{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:var(--bg);flex-shrink:0;z-index:1}
+.stp-d{min-width:38px;height:38px;padding:0 10px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;color:var(--bg);flex-shrink:0;z-index:1;white-space:nowrap}
+.stp-d.wide{border-radius:20px;padding:0 12px}
 .stp-d.gd{background:var(--gold)}.stp-d.bl{background:var(--blue)}.stp-d.em{background:var(--emerald)}.stp-d.vi{background:var(--violet)}.stp-d.ro{background:var(--rose)}.stp-d.am{background:var(--amber)}
 .stp-c{width:2px;flex:1;min-height:16px;background:var(--brd2)}
 .stp-r{padding-bottom:24px;flex:1}
@@ -159,6 +160,15 @@ a:hover{color:var(--gold2)}
 
 /* ── INFO GRID ── */
 .igrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:22px 0}
+
+/* ── NUMBERED CARDS GRID ── */
+.ncards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:22px 0}
+.ncard{background:var(--bg4);border:1px solid var(--brd);border-radius:var(--rs);padding:20px;display:flex;gap:14px;align-items:flex-start;transition:all .35s ease}
+.ncard:hover{border-color:rgba(212,168,83,.15);transform:translateY(-1px)}
+.ncard-num{min-width:36px;height:36px;padding:0 8px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.72rem;flex-shrink:0;white-space:nowrap;color:var(--bg)}
+.ncard-num.gd{background:var(--gold)}.ncard-num.bl{background:var(--blue)}.ncard-num.em{background:var(--emerald)}.ncard-num.vi{background:var(--violet)}.ncard-num.ro{background:var(--rose)}.ncard-num.am{background:var(--amber)}.ncard-num.cy{background:var(--cyan)}
+.ncard h4{font-size:.9rem;font-weight:700;margin-bottom:4px}
+.ncard p{font-size:.8rem;color:var(--t3);line-height:1.6}
 .iitem{background:var(--bg4);border:1px solid var(--brd);border-radius:var(--rs);padding:22px;transition:all .35s ease}
 .iitem:hover{border-color:rgba(212,168,83,.15);transform:translateY(-2px)}
 .iitem .iic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:1.1rem}
@@ -325,8 +335,8 @@ a:hover{color:var(--gold2)}
 <div class="stp"><div class="stp-l"><div class="stp-d bl">II</div><div class="stp-c"></div></div><div class="stp-r"><h4>Delimitação Orçamentária</h4><p>A pesquisa alimenta o planejamento financeiro. Sem ela, não há como certificar existência de recursos suficientes (art. 169, CF; LRF).</p></div></div>
 <div class="stp"><div class="stp-l"><div class="stp-d em">III</div><div class="stp-c"></div></div><div class="stp-r"><h4>Definição da Forma de Contratação</h4><p>O valor estimado determina a modalidade: licitação, dispensa por valor (art. 75, I e II), pregão ou concorrência.</p></div></div>
 <div class="stp"><div class="stp-l"><div class="stp-d vi">IV</div><div class="stp-c"></div></div><div class="stp-r"><h4>Exclusividade de ME/EPP</h4><p>Conforme LC Estadual nº 605/2018, itens dentro dos limites previstos devem ter participação exclusiva de microempresas.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d ro">V-VII</div><div class="stp-c"></div></div><div class="stp-r"><h4>Tripé de Proteção do Erário</h4><p>Identificar sobrepreço (V), detectar fraudes e jogos de planilha (VI) e impedir preços inexequíveis (VII). A pesquisa é a principal ferramenta de defesa.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d am">VIII-IX</div></div><div class="stp-r"><h4>Julgamento e Negociação</h4><p>O preço estimado serve de referência para aceitar/desclassificar propostas e para negociar preços em atas de registro de preços vigentes.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d wide ro">V–VII</div><div class="stp-c"></div></div><div class="stp-r"><h4>Tripé de Proteção do Erário</h4><p>Identificar sobrepreço (V), detectar fraudes e jogos de planilha (VI) e impedir preços inexequíveis (VII). A pesquisa é a principal ferramenta de defesa.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d wide am">VIII–IX</div></div><div class="stp-r"><h4>Julgamento e Negociação</h4><p>O preço estimado serve de referência para aceitar/desclassificar propostas e para negociar preços em atas de registro de preços vigentes.</p></div></div>
 </div>
 </div>
 
@@ -428,10 +438,10 @@ a:hover{color:var(--gold2)}
 <div class="card">
 <h3>A Regra 70-30 (§3º)</h3>
 <div class="tw"><table>
-<thead><tr><th>Classificação</th><th>Critério</th><th>Consequência</th></tr></thead>
+<thead><tr><th>Classificação</th><th>Critério (Art. 47, §3º)</th><th>Consequência</th></tr></thead>
 <tbody>
-<tr><td><span class="badge al">Excessivo</span></td><td>Superior a <strong>30%</strong> da média dos demais</td><td>Desconsiderado</td></tr>
-<tr><td><span class="badge al">Inexequível</span></td><td>Inferior a <strong>70%</strong> da média dos demais</td><td>Desconsiderado</td></tr>
+<tr><td><span class="badge al">Excessivo</span></td><td>Superior a <strong>30%</strong> da média dos demais preços</td><td>Desconsiderado</td></tr>
+<tr><td><span class="badge al">Inexequível</span></td><td>Inferior a <strong>70%</strong> da média dos demais preços</td><td>Desconsiderado</td></tr>
 </tbody></table></div>
 <p>O <strong>§4º</strong> exige declaração expressa pela área técnica quando valores forem desconsiderados, admitindo exceções justificadas.</p>
 <div class="hbox vi">
@@ -444,7 +454,7 @@ a:hover{color:var(--gold2)}
 <div class="cbox-b">
 <p><strong>Objeto:</strong> 500 resmas de papel A4.</p>
 <p><strong>Preços coletados:</strong> R$ 22,00 (Painel de Preços) · R$ 25,50 (contrato UFMT) · R$ 28,00 (fornecedor A) · R$ 27,00 (fornecedor B) · R$ 55,00 (fornecedor C).</p>
-<p><strong>Passo 1 — Regra 70-30:</strong> Média dos 4 menores = R$ 25,63. Limite 130% = R$ 33,31. O valor R$ 55,00 é excessivo → <strong>desconsiderado</strong>.</p>
+<p><strong>Passo 1 — Regra 70-30:</strong> Média dos 4 menores = R$ 25,63. Limite de excessividade (30% acima da média) = R$ 33,31. O valor R$ 55,00 ultrapassa em mais de 30% a média → <strong>desconsiderado como excessivo</strong>.</p>
 <p><strong>Passo 2 — Recálculo:</strong> Média = R$ 25,63 · Mediana = R$ 26,25 · Menor = R$ 22,00.</p>
 <p><strong>Passo 3 — Justificativa:</strong> "Optou-se pela média (R$ 25,63), pois representa o conjunto homogêneo após exclusão do preço excessivo, equilibrando economicidade e redução do risco de certame deserto."</p>
 </div>
@@ -458,13 +468,15 @@ a:hover{color:var(--gold2)}
 <div class="card">
 <h3>Art. 48 — Mapa Comparativo de Preços</h3>
 <p>A pesquisa se materializa no <strong>mapa comparativo</strong>, elaborado pela unidade requisitante, contendo:</p>
-<div class="steps">
-<div class="stp"><div class="stp-l"><div class="stp-d gd">I</div><div class="stp-c"></div></div><div class="stp-r"><h4>Descrição e Quantitativo</h4><p>Objeto a ser contratado com quantitativo preciso.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d bl">II</div><div class="stp-c"></div></div><div class="stp-r"><h4>Fontes Consultadas</h4><p>Caracterização de cada parâmetro do art. 46 utilizado.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d em">III</div><div class="stp-c"></div></div><div class="stp-r"><h4>Série de Preços Coletados</h4><p>Todos os preços obtidos, em formato comparativo.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d vi">IV</div><div class="stp-c"></div></div><div class="stp-r"><h4>Método Estatístico</h4><p>Indicação do método (média, mediana ou menor) com justificativa.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d ro">V</div><div class="stp-c"></div></div><div class="stp-r"><h4>Justificativas e Validações</h4><p>Valores desconsiderados (excessivos/inexequíveis) e fundamentação.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d am">VI-VIII</div></div><div class="stp-r"><h4>Valor Estimado, Memória de Cálculo e Assinatura</h4><p>Conclusão com valor total e identificação do servidor. <strong>Validade: 1 ano</strong> (§2º).</p></div></div>
+<div class="ncards">
+<div class="ncard"><div class="ncard-num gd">I</div><div><h4>Descrição e Quantitativo</h4><p>Objeto a ser contratado com quantitativo preciso.</p></div></div>
+<div class="ncard"><div class="ncard-num bl">II</div><div><h4>Fontes Consultadas</h4><p>Caracterização de cada parâmetro do art. 46 utilizado.</p></div></div>
+<div class="ncard"><div class="ncard-num em">III</div><div><h4>Série de Preços Coletados</h4><p>Todos os preços obtidos, em formato comparativo.</p></div></div>
+<div class="ncard"><div class="ncard-num vi">IV</div><div><h4>Método Estatístico</h4><p>Indicação do método (média, mediana ou menor) com justificativa.</p></div></div>
+<div class="ncard"><div class="ncard-num ro">V</div><div><h4>Justificativas e Validações</h4><p>Valores desconsiderados (excessivos/inexequíveis) e fundamentação da metodologia.</p></div></div>
+<div class="ncard"><div class="ncard-num am">VI</div><div><h4>Valor Estimado e Memória de Cálculo</h4><p>Indicação do valor estimado com documentos de suporte.</p></div></div>
+<div class="ncard"><div class="ncard-num cy">VII</div><div><h4>Justificativa dos Fornecedores</h4><p>No caso de pesquisa direta (inciso IV), justificativa da escolha.</p></div></div>
+<div class="ncard"><div class="ncard-num gd">VIII</div><div><h4>Data, Identificação e Assinatura</h4><p>Do servidor responsável. <strong>Validade do mapa: 1 ano</strong> (§2º).</p></div></div>
 </div>
 <p><strong>§1º:</strong> Documentos disponíveis na internet devem ter o hiperlink indicado nos autos. Se não públicos, devem ser juntados fisicamente.</p>
 </div>
@@ -537,14 +549,14 @@ a:hover{color:var(--gold2)}
 
 <div class="card">
 <h3>Checklist Operacional Completo</h3>
-<div class="steps">
-<div class="stp"><div class="stp-l"><div class="stp-d gd">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>1. Consultou sistemas oficiais (inciso I)?</h4><p>Painel de Preços, PNCP, Banco de Preços em Saúde, Radar TCE-MT.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d gd">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>2. Verificou contratações similares (inciso II)?</h4><p>Contratos e atas vigentes de até 1 ano, com atualização de índices se necessário.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d bl">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>3. Se não usou I ou II, justificou nos autos?</h4><p>Obrigatório pelo §2º do art. 46.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d em">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>4. Obteve mínimo de 3 preços válidos?</h4><p>Após regra 70-30, restam ao menos 3? Se não, justificar (§1º art. 47).</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d vi">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>5. Aplicou e documentou a regra 70-30?</h4><p>Excessivos (>130% média) e inexequíveis (<70% média) desconsiderados e declarados.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d ro">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>6. Justificou a metodologia escolhida?</h4><p>Média, mediana ou menor — com fundamentação técnica.</p></div></div>
-<div class="stp"><div class="stp-l"><div class="stp-d am">✓</div></div><div class="stp-r"><h4>7. Análise crítica por servidor diverso?</h4><p>Art. 50 — segregação de funções, certificação de compatibilidade e condizência.</p></div></div>
+<div class="ncards">
+<div class="ncard"><div class="ncard-num gd">✓</div><div><h4>1. Consultou sistemas oficiais (inciso I)?</h4><p>Painel de Preços, PNCP, Banco de Preços em Saúde, Radar TCE-MT.</p></div></div>
+<div class="ncard"><div class="ncard-num gd">✓</div><div><h4>2. Verificou contratações similares (inciso II)?</h4><p>Contratos e atas vigentes de até 1 ano, com atualização de índices se necessário.</p></div></div>
+<div class="ncard"><div class="ncard-num bl">✓</div><div><h4>3. Se não usou I ou II, justificou nos autos?</h4><p>Obrigatório pelo §2º do art. 46.</p></div></div>
+<div class="ncard"><div class="ncard-num em">✓</div><div><h4>4. Obteve mínimo de 3 preços válidos?</h4><p>Após regra 70-30, restam ao menos 3? Se não, justificar (§1º art. 47).</p></div></div>
+<div class="ncard"><div class="ncard-num vi">✓</div><div><h4>5. Aplicou e documentou a regra 70-30?</h4><p>Excessivos (superiores a 30% da média) e inexequíveis (inferiores a 70% da média) desconsiderados e declarados.</p></div></div>
+<div class="ncard"><div class="ncard-num ro">✓</div><div><h4>6. Justificou a metodologia escolhida?</h4><p>Média, mediana ou menor — com fundamentação técnica.</p></div></div>
+<div class="ncard"><div class="ncard-num am">✓</div><div><h4>7. Análise crítica por servidor diverso?</h4><p>Art. 50 — segregação de funções, certificação de compatibilidade e condizência.</p></div></div>
 </div>
 </div>
 
@@ -574,8 +586,8 @@ a:hover{color:var(--gold2)}
 <div class="qopt" onclick="chk('q2',this,1)"><span class="ol">C</span> 30% da média</div>
 <div class="qopt" onclick="chk('q2',this,0)"><span class="ol">D</span> 25% da média</div>
 </div>
-<div class="qfb ok" id="q2ok">✅ <strong>Correto!</strong> Art. 47, §3º, I: superiores a 30% da média = excessivos (>130%). Inexequíveis: <70%.</div>
-<div class="qfb no" id="q2no">❌ <strong>Incorreto.</strong> Resposta: C. A regra "70-30": inexequíveis abaixo de 70%, excessivos acima de 130%.</div>
+<div class="qfb ok" id="q2ok">✅ <strong>Correto!</strong> Art. 47, §3º, I: são excessivos os preços superiores a 30% da média dos demais. Já os inexequíveis são os inferiores a 70% da média.</div>
+<div class="qfb no" id="q2no">❌ <strong>Incorreto.</strong> Resposta: C. A regra "70-30": preço excessivo é aquele que supera em 30% a média dos demais; inexequível é aquele inferior a 70% da média.</div>
 </div>
 
 <!-- QUIZ 3 -->
