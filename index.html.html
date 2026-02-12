@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Prático · Pesquisa de Preços — Decreto 1.525/2022 MT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080c14;--bg2:#111827;--bg3:#1a2236;--bg4:#161d2e;
+  --gold:#d4a853;--gold2:#f0d68a;--blue:#3b82f6;--emerald:#10b981;
+  --rose:#f43f5e;--violet:#8b5cf6;--amber:#f59e0b;--cyan:#06b6d4;
+  --t1:#f1f5f9;--t2:#94a3b8;--t3:#64748b;
+  --brd:#1e293b;--brd2:#334155;
+  --r:16px;--rs:10px;
+  --ff:'DM Sans',system-ui,sans-serif;
+  --fd:'Playfair Display',Georgia,serif;
+  --fm:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--bg);color:var(--t1);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+::selection{background:rgba(212,168,83,.3);color:#fff}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold2)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:2rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(212,168,83,.06) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 20% 80%,rgba(59,130,246,.04) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 20%,rgba(139,92,246,.03) 0%,transparent 60%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,168,83,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,83,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black 30%,transparent 70%)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(212,168,83,.08);border:1px solid rgba(212,168,83,.15);border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;backdrop-filter:blur(10px);animation:fsu .8s ease-out both}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pd 2s ease-in-out infinite}
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.hero h1{font-family:var(--fd);font-size:clamp(2.6rem,6vw,5.2rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem;animation:fsu .8s .15s ease-out both}
+.hero h1 span{background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 50%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shm 4s linear infinite}
+@keyframes shm{0%{background-position:0% center}100%{background-position:200% center}}
+.hero-sub{font-size:clamp(.95rem,2vw,1.2rem);color:var(--t2);max-width:660px;margin-bottom:2.5rem;font-weight:300;animation:fsu .8s .3s ease-out both}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-bottom:3rem;animation:fsu .8s .45s ease-out both}
+.hero-mi{display:flex;align-items:center;gap:8px;font-size:.83rem;color:var(--t3)}
+.hero-mi svg{width:16px;height:16px;color:var(--gold)}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:linear-gradient(135deg,var(--gold),#c4943f);color:var(--bg);font-family:var(--ff);font-weight:700;font-size:1rem;border:none;border-radius:100px;cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 30px rgba(212,168,83,.3);animation:fsu .8s .6s ease-out both}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(212,168,83,.5)}
+.hero-cta svg{width:18px;height:18px}
+@keyframes fsu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;background:rgba(8,12,20,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--brd);display:none;align-items:center;justify-content:space-between}
+.nav.vis{display:flex}
+.nav-brand{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--gold)}
+.nav-pw{flex:1;max-width:300px;margin:0 24px;height:3px;background:var(--brd);border-radius:2px;overflow:hidden}
+.nav-pb{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;width:0%;transition:width .5s ease}
+.nav-ml{font-size:.78rem;color:var(--t3)}
+
+/* ── SIDEBAR DOTS ── */
+.sdots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:100;display:none;flex-direction:column;gap:6px}
+@media(min-width:1200px){.sdots.vis{display:flex}}
+.sdot{width:10px;height:10px;border-radius:50%;background:var(--brd2);border:none;cursor:pointer;transition:all .3s ease;position:relative}
+.sdot:hover,.sdot.act{background:var(--gold);transform:scale(1.3)}
+.sdot::after{content:attr(data-l);position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.7rem;font-weight:600;color:var(--t3);opacity:0;transition:opacity .2s;pointer-events:none}
+.sdot:hover::after{opacity:1}
+
+/* ── MAIN ── */
+.main{display:none;max-width:1100px;margin:0 auto;padding:0 24px 100px}
+.main.act{display:block}
+
+/* ── MODULE ── */
+.mod{margin-bottom:80px;opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.mod.vis{opacity:1;transform:translateY(0)}
+.mod-hdr{display:flex;align-items:flex-start;gap:20px;margin-bottom:36px;padding-top:80px}
+.mod-num{display:flex;align-items:center;justify-content:center;width:54px;height:54px;background:linear-gradient(135deg,var(--gold),#c4943f);color:var(--bg);font-family:var(--fd);font-size:1.3rem;font-weight:900;border-radius:14px;flex-shrink:0}
+.mod-tg h2{font-family:var(--fd);font-size:clamp(1.5rem,3.5vw,2.3rem);font-weight:700;line-height:1.15;margin-bottom:6px}
+.mod-tag{font-size:.73rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);opacity:.8}
+
+/* ── CARDS ── */
+.card{background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);padding:30px;margin-bottom:22px;transition:all .35s ease}
+.card:hover{border-color:rgba(212,168,83,.15);box-shadow:0 0 40px rgba(212,168,83,.06)}
+.card h3{font-family:var(--fd);font-size:1.25rem;font-weight:700;margin-bottom:14px}
+.card p,.card li{color:var(--t2);font-size:.93rem;line-height:1.8}
+.card p{margin-bottom:12px}
+.card ul,.card ol{padding-left:20px;margin-bottom:12px}
+.card li{margin-bottom:6px;padding-left:4px}
+.card li::marker{color:var(--gold)}
+
+/* ── HIGHLIGHT BOX ── */
+.hbox{border-left:3px solid var(--gold);border-radius:0 var(--rs) var(--rs) 0;padding:22px 26px;margin:18px 0;background:linear-gradient(135deg,rgba(212,168,83,.06),rgba(212,168,83,.02))}
+.hbox.bl{border-color:var(--blue);background:linear-gradient(135deg,rgba(59,130,246,.06),rgba(59,130,246,.02))}
+.hbox.em{border-color:var(--emerald);background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(16,185,129,.02))}
+.hbox.ro{border-color:var(--rose);background:linear-gradient(135deg,rgba(244,63,94,.06),rgba(244,63,94,.02))}
+.hbox.vi{border-color:var(--violet);background:linear-gradient(135deg,rgba(139,92,246,.06),rgba(139,92,246,.02))}
+.hbox strong{color:var(--t1)}.hbox p{margin-bottom:6px}.hbox p:last-child{margin-bottom:0}
+
+/* ── LAW BOX ── */
+.lbox{background:var(--bg4);border:1px solid var(--brd);border-radius:var(--r);padding:26px;margin:18px 0;position:relative;overflow:hidden}
+.lbox::before{content:'§';position:absolute;top:-10px;right:20px;font-family:var(--fd);font-size:5rem;font-weight:900;color:rgba(212,168,83,.04);pointer-events:none}
+.lbox-lb{display:inline-flex;padding:4px 12px;background:rgba(212,168,83,.1);border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.lbox p{font-family:var(--fm);font-size:.83rem;line-height:1.9;color:var(--t2)}
+.lbox p strong{color:var(--gold2);font-weight:600}
+
+/* ── ACCORDION ── */
+.acc-item{border:1px solid var(--brd);border-radius:var(--rs);margin-bottom:8px;overflow:hidden}
+.acc-item:hover{border-color:var(--brd2)}
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg2);border:none;color:var(--t1);font-family:var(--ff);font-size:.93rem;font-weight:600;cursor:pointer;text-align:left;transition:background .3s}
+.acc-btn:hover{background:var(--bg3)}
+.acc-btn .ic{width:20px;height:20px;transition:transform .3s;color:var(--gold);flex-shrink:0}
+.acc-item.open .acc-btn .ic{transform:rotate(180deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.acc-inner{padding:0 20px 20px;color:var(--t2);font-size:.88rem;line-height:1.8}
+.acc-item.open .acc-body{max-height:2000px}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;margin:22px 0}
+.stp{display:flex;gap:18px}
+.stp-l{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.stp-d{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:var(--bg);flex-shrink:0;z-index:1}
+.stp-d.gd{background:var(--gold)}.stp-d.bl{background:var(--blue)}.stp-d.em{background:var(--emerald)}.stp-d.vi{background:var(--violet)}.stp-d.ro{background:var(--rose)}.stp-d.am{background:var(--amber)}
+.stp-c{width:2px;flex:1;min-height:16px;background:var(--brd2)}
+.stp-r{padding-bottom:24px;flex:1}
+.stp-r h4{font-size:.97rem;font-weight:700;margin-bottom:4px}
+.stp-r p{font-size:.86rem;color:var(--t2);line-height:1.7}
+
+/* ── TABLE ── */
+.tw{overflow-x:auto;margin:18px 0;border-radius:var(--r);border:1px solid var(--brd)}
+.tw table{width:100%;border-collapse:collapse;font-size:.86rem}
+.tw th{background:var(--bg4);padding:13px 16px;text-align:left;font-weight:700;color:var(--gold);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--brd);white-space:nowrap}
+.tw td{padding:13px 16px;border-bottom:1px solid var(--brd);color:var(--t2);vertical-align:top}
+.tw tr:last-child td{border-bottom:none}
+.tw tr:hover td{background:rgba(212,168,83,.02)}
+.badge{display:inline-flex;padding:3px 10px;border-radius:100px;font-size:.7rem;font-weight:700;letter-spacing:.04em}
+.badge.pr{background:rgba(212,168,83,.15);color:var(--gold)}
+.badge.sc{background:rgba(59,130,246,.15);color:var(--blue)}
+.badge.al{background:rgba(244,63,94,.15);color:var(--rose)}
+.badge.su{background:rgba(16,185,129,.15);color:var(--emerald)}
+
+/* ── INFO GRID ── */
+.igrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:22px 0}
+.iitem{background:var(--bg4);border:1px solid var(--brd);border-radius:var(--rs);padding:22px;transition:all .35s ease}
+.iitem:hover{border-color:rgba(212,168,83,.15);transform:translateY(-2px)}
+.iitem .iic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:1.1rem}
+.iic.gd{background:rgba(212,168,83,.12)}.iic.bl{background:rgba(59,130,246,.12)}.iic.em{background:rgba(16,185,129,.12)}.iic.vi{background:rgba(139,92,246,.12)}.iic.ro{background:rgba(244,63,94,.12)}
+.iitem h4{font-size:.92rem;font-weight:700;margin-bottom:6px}
+.iitem p{font-size:.8rem;color:var(--t3);line-height:1.6}
+
+/* ── CASE STUDY ── */
+.cbox{background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;margin:22px 0}
+.cbox-h{padding:18px 26px;background:var(--bg4);border-bottom:1px solid var(--brd);display:flex;align-items:center;gap:12px}
+.cbox-h h4{font-size:.93rem;font-weight:700}
+.cbox-tag{margin-left:auto;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--amber)}
+.cbox-b{padding:22px 26px;font-size:.88rem;color:var(--t2);line-height:1.8}
+
+/* ── QUIZ ── */
+.qcard{background:linear-gradient(135deg,var(--bg2),var(--bg4));border:1px solid var(--brd);border-radius:var(--r);padding:30px;margin:22px 0}
+.qcard h4{font-family:var(--fd);font-size:1.1rem;margin-bottom:6px}
+.qlb{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:10px}
+.qcard p.qq{font-size:.93rem;margin-bottom:16px;color:var(--t2)}
+.qopts{display:flex;flex-direction:column;gap:8px}
+.qopt{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--bg);border:1px solid var(--brd);border-radius:var(--rs);cursor:pointer;transition:all .3s;font-size:.88rem;color:var(--t2)}
+.qopt:hover{border-color:var(--brd2);background:var(--bg2)}
+.qopt.ok{border-color:var(--emerald)!important;background:rgba(16,185,129,.08)!important;color:var(--emerald)!important}
+.qopt.no{border-color:var(--rose)!important;background:rgba(244,63,94,.08)!important;color:var(--rose)!important}
+.qopt .ol{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.76rem;background:var(--bg4);color:var(--t3);flex-shrink:0;border:1px solid var(--brd)}
+.qfb{margin-top:14px;padding:14px 18px;border-radius:var(--rs);font-size:.86rem;line-height:1.7;display:none}
+.qfb.sh{display:block}
+.qfb.ok{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--emerald)}
+.qfb.no{background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.2);color:var(--rose)}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:60px 24px;border-top:1px solid var(--brd);margin-top:80px}
+.footer p{font-size:.8rem;color:var(--t3);line-height:1.8}
+.footer .fb{font-family:var(--fd);font-weight:700;color:var(--gold);font-size:1rem;margin-bottom:8px}
+
+/* ── NAV BUTTONS ── */
+.nav-btns{display:flex;justify-content:center;gap:14px;margin:40px 0;flex-wrap:wrap}
+.nbtn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:100px;font-family:var(--ff);font-weight:600;font-size:.88rem;cursor:pointer;transition:all .35s ease;border:none;text-decoration:none}
+.nbtn-back{background:transparent;border:1px solid var(--brd2);color:var(--t2)}
+.nbtn-back:hover{border-color:var(--gold);color:var(--gold)}
+.nbtn-fwd{background:linear-gradient(135deg,var(--gold),#c4943f);color:var(--bg);box-shadow:0 4px 20px rgba(212,168,83,.25)}
+.nbtn-fwd:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,168,83,.4)}
+.nbtn svg{width:16px;height:16px}
+
+/* ── FINALE PAGE ── */
+.finale{display:none;min-height:100vh;position:relative;overflow:hidden}
+.finale.act{display:block}
+.finale-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 30%,rgba(212,168,83,.05) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 70%,rgba(139,92,246,.03) 0%,transparent 50%),radial-gradient(ellipse 50% 40% at 10% 60%,rgba(59,130,246,.03) 0%,transparent 50%)}
+.finale-stars{position:absolute;inset:0;overflow:hidden}
+.finale-star{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;animation:twinkle linear infinite}
+@keyframes twinkle{0%,100%{opacity:.1;transform:scale(1)}50%{opacity:.8;transform:scale(1.5)}}
+.finale-content{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:80px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:100vh;justify-content:center}
+.finale-icon{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(212,168,83,.08);border:1px solid rgba(212,168,83,.15);margin-bottom:32px;animation:fsu .8s ease-out both}
+.finale-label{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;animation:fsu .8s .1s ease-out both}
+.finale-title{font-family:var(--fd);font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.15;margin-bottom:20px;animation:fsu .8s .2s ease-out both}
+.finale-divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 40px;animation:fsu .8s .3s ease-out both}
+.finale-quote{font-family:var(--fd);font-size:clamp(1.05rem,2.2vw,1.35rem);font-style:italic;line-height:1.8;color:var(--t2);max-width:680px;margin-bottom:12px;animation:fsu .8s .4s ease-out both;position:relative;padding:0 20px}
+.finale-quote::before,.finale-quote::after{font-family:var(--fd);font-size:3rem;color:rgba(212,168,83,.2);position:absolute;line-height:1}
+.finale-quote::before{content:'\201C';top:-10px;left:-10px}
+.finale-quote::after{content:'\201D';bottom:-30px;right:-10px}
+.finale-author{font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:6px;animation:fsu .8s .55s ease-out both}
+.finale-author-desc{font-size:.78rem;color:var(--t3);margin-bottom:50px;animation:fsu .8s .65s ease-out both}
+.finale-sources{background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);padding:24px 28px;max-width:600px;width:100%;margin-bottom:40px;text-align:left;animation:fsu .8s .75s ease-out both}
+.finale-sources h4{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.finale-sources p{font-size:.76rem;color:var(--t3);line-height:1.7}
+.finale-home{animation:fsu .8s .85s ease-out both}
+.finale-credit{margin-top:60px;padding-top:30px;border-top:1px solid var(--brd);animation:fsu .8s .95s ease-out both}
+.finale-credit p{font-size:.72rem;color:var(--t3);letter-spacing:.04em}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .card,.lbox,.qcard{padding:20px}
+  .mod-hdr{flex-direction:column;gap:12px;padding-top:60px}
+  .hero-meta{flex-direction:column;align-items:center;gap:.6rem}
+  .igrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="hero-bg"></div>
+<div class="hero-grid"></div>
+<div class="hero-badge">Guia Prático Avançado · Mato Grosso</div>
+<h1>Pesquisa de <span>Preços</span></h1>
+<p class="hero-sub">Domine os Arts. 43 a 52 do Decreto Estadual 1.525/2022-MT que regulamenta a Lei Federal 14.133/2021. Um guia prático e imersivo com casos reais, jurisprudência do TCU e exercícios interativos.</p>
+<div class="hero-meta">
+<div class="hero-mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>8 Módulos</div>
+<div class="hero-mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Decreto 1.525/2022</div>
+<div class="hero-mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>Quizzes Interativos</div>
+</div>
+<button class="hero-cta" onclick="startCourse()">Iniciar a Leitura <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+</section>
+
+<!-- NAV -->
+<nav class="nav" id="topNav">
+<div class="nav-brand">Pesquisa de Preços</div>
+<div class="nav-pw"><div class="nav-pb" id="navPb"></div></div>
+<div class="nav-ml" id="navMl">Módulo 1 de 8</div>
+</nav>
+
+<!-- SIDEBAR -->
+<div class="sdots" id="sDots">
+<button class="sdot" data-l="Fundamentos" onclick="goMod(1)"></button>
+<button class="sdot" data-l="Objetivos" onclick="goMod(2)"></button>
+<button class="sdot" data-l="Critérios" onclick="goMod(3)"></button>
+<button class="sdot" data-l="Parâmetros" onclick="goMod(4)"></button>
+<button class="sdot" data-l="Metodologia" onclick="goMod(5)"></button>
+<button class="sdot" data-l="Formalização" onclick="goMod(6)"></button>
+<button class="sdot" data-l="Contratação Direta" onclick="goMod(7)"></button>
+<button class="sdot" data-l="Quiz Final" onclick="goMod(8)"></button>
+</div>
+
+<!-- ═══ COURSE CONTENT ═══ -->
+<main class="main" id="mainContent">
+
+<!-- ═══ MÓDULO 1 ═══ -->
+<section class="mod" id="m1">
+<div class="mod-hdr"><div class="mod-num">1</div><div class="mod-tg"><div class="mod-tag">Módulo 1 · Fundamentos</div><h2>O que é a Pesquisa de Preços e por que ela é vital</h2></div></div>
+
+<div class="card">
+<h3>Contexto Normativo</h3>
+<p>A <strong>pesquisa de preços</strong> é o procedimento administrativo prévio e indispensável para fixar o valor estimado de qualquer contratação pública. No Estado de Mato Grosso, o <strong>Decreto nº 1.525/2022</strong> dedica todo o Capítulo V (arts. 43 a 62) ao tema, com regras específicas para o âmbito estadual.</p>
+<p>Ela se conecta diretamente ao <strong>art. 23 da Lei 14.133/2021</strong>, que determina que o valor previamente estimado da contratação deverá ser compatível com os valores praticados pelo mercado, considerados os preços constantes de bancos de dados públicos e as quantidades a serem contratadas.</p>
+<div class="hbox">
+<p><strong>🧠 Ancoragem Conceitual:</strong> Imagine a pesquisa de preços como a <em>bússola</em> de uma navegação. Sem ela, o navio (a contratação) navega às cegas, podendo encalhar no sobrepreço ou naufragar na inexequibilidade. Toda vez que pensar em pesquisa de preços, visualize essa bússola apontando para o "preço justo".</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Hierarquia Normativa</h3>
+<div class="igrid">
+<div class="iitem"><div class="iic gd">🏛️</div><h4>Lei 14.133/2021</h4><p>Art. 23 — Norma geral federal sobre valor estimado das contratações públicas.</p></div>
+<div class="iitem"><div class="iic bl">📜</div><h4>Decreto 1.525/2022 MT</h4><p>Arts. 43–52 — Regulamentação estadual da pesquisa de preços em Mato Grosso.</p></div>
+<div class="iitem"><div class="iic em">⚖️</div><h4>IN SEGES/ME nº 65/2021</h4><p>Referência federal que inspirou o modelo de MT, com adaptações regionais.</p></div>
+<div class="iitem"><div class="iic vi">🔍</div><h4>Jurisprudência do TCU</h4><p>Acórdãos que consolidam a "cesta de preços" como padrão obrigatório.</p></div>
+</div>
+</div>
+
+<div class="card">
+<h3>Por que a Pesquisa de Preços é tão importante?</h3>
+<p>O TCU, no <strong>Acórdão 2816/2014-Plenário</strong>, alertou que estimativas baseadas apenas em cotações de fornecedores tendem a apresentar preços superestimados, pois as empresas, sabendo que o valor será usado como teto, não revelam o preço real a que estão dispostas a contratar.</p>
+<p>Mais recentemente, o <strong>Acórdão 3569/2023</strong> (2ª Câmara) classificou como <strong>erro grosseiro</strong> — para fins de responsabilização pessoal (art. 28 LINDB) — a elaboração de orçamento sem dimensionamento adequado e baseado exclusivamente em fornecedores, gerando substancial sobrepreço.</p>
+<div class="hbox ro">
+<p><strong>⚠️ Consequência prática:</strong> O servidor que elabora mal a pesquisa de preços pode ser pessoalmente responsabilizado, com aplicação de multa pelo TCU e obrigação de ressarcir o erário. A pesquisa não é mera formalidade — é sua proteção profissional.</p>
+</div>
+</div>
+</section>
+
+<!-- ═══ MÓDULO 2 ═══ -->
+<section class="mod" id="m2">
+<div class="mod-hdr"><div class="mod-num">2</div><div class="mod-tg"><div class="mod-tag">Módulo 2 · Art. 43</div><h2>Os 9 Objetivos da Pesquisa de Preços</h2></div></div>
+
+<div class="lbox">
+<div class="lbox-lb">📖 Art. 43 — Decreto 1.525/2022</div>
+<p>"A pesquisa de preço tem como objetivos: <strong>I</strong> — fixar o preço estimado e justo do objeto da contratação, inclusive seus aditivos, definido com base no melhor valor aferido, visando à seleção da proposta mais vantajosa para a Administração; <strong>II</strong> — delimitar os recursos orçamentários necessários; <strong>III</strong> — definir a forma de contratação; <strong>IV</strong> — identificar exclusividade de ME e EPP; <strong>V</strong> — identificar sobrepreços; <strong>VI</strong> — identificar fraude, simulação ou jogos de planilhas; <strong>VII</strong> — impedir preços inexequíveis ou excessivamente elevados; <strong>VIII</strong> — servir de parâmetro objetivo para julgamento; <strong>IX</strong> — auxiliar na negociação de preços registrados em ata."</p>
+</div>
+
+<div class="card">
+<h3>Desdobramento dos Objetivos</h3>
+<div class="steps">
+<div class="stp"><div class="stp-l"><div class="stp-d gd">I</div><div class="stp-c"></div></div><div class="stp-r"><h4>Preço Justo e Vantajoso</h4><p>O objetivo primordial: fixar um valor que não seja alto demais (sobrepreço) nem baixo demais (inexequível). A alteração pelo Dec. 216/2023 acrescentou <em>"definido com base no melhor valor aferido"</em>, reforçando a busca ativa.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d bl">II</div><div class="stp-c"></div></div><div class="stp-r"><h4>Delimitação Orçamentária</h4><p>A pesquisa alimenta o planejamento financeiro. Sem ela, não há como certificar existência de recursos suficientes (art. 169, CF; LRF).</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d em">III</div><div class="stp-c"></div></div><div class="stp-r"><h4>Definição da Forma de Contratação</h4><p>O valor estimado determina a modalidade: licitação, dispensa por valor (art. 75, I e II), pregão ou concorrência.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d vi">IV</div><div class="stp-c"></div></div><div class="stp-r"><h4>Exclusividade de ME/EPP</h4><p>Conforme LC Estadual nº 605/2018, itens dentro dos limites previstos devem ter participação exclusiva de microempresas.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d ro">V-VII</div><div class="stp-c"></div></div><div class="stp-r"><h4>Tripé de Proteção do Erário</h4><p>Identificar sobrepreço (V), detectar fraudes e jogos de planilha (VI) e impedir preços inexequíveis (VII). A pesquisa é a principal ferramenta de defesa.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d am">VIII-IX</div></div><div class="stp-r"><h4>Julgamento e Negociação</h4><p>O preço estimado serve de referência para aceitar/desclassificar propostas e para negociar preços em atas de registro de preços vigentes.</p></div></div>
+</div>
+</div>
+
+<div class="hbox bl">
+<p><strong>📌 Jurisprudência — Acórdão 1875/2021-Plenário (TCU):</strong> As pesquisas de preços devem ser baseadas em uma <em>"cesta de preços"</em>, priorizando preços públicos. A pesquisa exclusivamente junto a fornecedores deve ser utilizada somente em <strong>último caso</strong>, na extrema ausência de preços públicos.</p>
+</div>
+</section>
+
+<!-- ═══ MÓDULO 3 ═══ -->
+<section class="mod" id="m3">
+<div class="mod-hdr"><div class="mod-num">3</div><div class="mod-tg"><div class="mod-tag">Módulo 3 · Arts. 44 e 45</div><h2>Sigilo do Preço Estimado e Critérios da Pesquisa</h2></div></div>
+
+<div class="card">
+<h3>Art. 44 — Caráter Sigiloso do Preço Estimado</h3>
+<p>O preço estimado <strong>poderá ter caráter sigiloso</strong>, desde que justificado. Quando sigiloso, torna-se público apenas <strong>após a fase de negociação de propostas</strong>.</p>
+<div class="hbox ro">
+<p><strong>⚠️ Exceção:</strong> Quando o critério de julgamento for <strong>maior desconto</strong>, o preço estimado deve constar do edital — não pode ser sigiloso.</p>
+</div>
+<p>O fundamento estratégico: impedir que fornecedores calibrem propostas artificialmente próximas ao teto, promovendo maior competitividade e economia.</p>
+<div class="hbox">
+<p><strong>🧠 Outra perspectiva:</strong> Em vez de pensar no sigilo como "esconder informação", reformule: o sigilo <em>protege a competição</em>. Quanto menos o fornecedor souber do teto, mais sua proposta tenderá a refletir o custo real, e não o máximo aceitável.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Art. 45 — Critérios para Realização da Pesquisa</h3>
+<p>A pesquisa deve observar, <em>sempre que possível</em>, as <strong>condições comerciais reais</strong>:</p>
+<ul>
+<li><strong>Prazos e locais</strong> de entrega, instalação e montagem</li>
+<li><strong>Quantidade contratada</strong> — economia de escala</li>
+<li><strong>Formas de pagamento</strong> e fretes</li>
+<li><strong>Garantias</strong> e marcas/modelos, quando aplicável</li>
+<li><strong>Peculiaridades do local</strong> de execução do objeto</li>
+</ul>
+<div class="hbox em">
+<p><strong>💡 Dica Prática:</strong> Ao pesquisar preços para um serviço em Cuiabá, não copie valores de São Paulo. Deslocamento, clima e mercado local impactam diretamente o preço. O art. 45 existe exatamente para exigir essa <em>contextualização</em>.</p>
+</div>
+<p><strong>Parágrafo único — Matriz de Riscos:</strong> Quando houver matriz de alocação de riscos entre contratante e contratado, o cálculo do valor estimado poderá considerar <em>taxa de risco compatível</em> com o objeto e os riscos atribuídos ao contratado.</p>
+</div>
+</section>
+
+<!-- ═══ MÓDULO 4 ═══ -->
+<section class="mod" id="m4">
+<div class="mod-hdr"><div class="mod-num">4</div><div class="mod-tg"><div class="mod-tag">Módulo 4 · Art. 46 — O Coração do Decreto</div><h2>Os 5 Parâmetros da Pesquisa de Preços</h2></div></div>
+
+<div class="card">
+<h3>Visão Geral</h3>
+<p>O art. 46 é o <strong>dispositivo central</strong> de todo o Capítulo V. Define 5 fontes autorizadas que podem ser usadas de forma <em>combinada ou não</em>. Toda pesquisa deve ser informada no <strong>SIAG</strong> (Sistema de Aquisições Governamentais).</p>
+<div class="hbox">
+<p><strong>🧠 Mnemônico SICOP-N:</strong> Para memorizar os 5 parâmetros: <strong>S</strong>istemas oficiais · <strong>I</strong>dem contratações similares · <strong>C</strong>onsulta em mídias/sítios · <strong>O</strong>rçamentos de fornecedores · <strong>N</strong>otas fiscais eletrônicas.</p>
+</div>
+</div>
+
+<div class="tw"><table>
+<thead><tr><th>Inciso</th><th>Parâmetro</th><th>Fonte</th><th>Prazo</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><strong>I</strong></td><td>Sistemas oficiais de governo</td><td>Painel de Preços, Banco de Preços em Saúde, Radar TCE-MT, PNCP</td><td>—</td><td><span class="badge pr">Preferencial</span></td></tr>
+<tr><td><strong>II</strong></td><td>Contratações similares da Adm. Pública</td><td>Contratos, atas, empenhos de outros órgãos</td><td>1 ano</td><td><span class="badge pr">Preferencial</span></td></tr>
+<tr><td><strong>III</strong></td><td>Mídia especializada e sítios eletrônicos</td><td>Tabelas oficiais, portais de domínio amplo (c/ data e hora)</td><td>1 ano</td><td><span class="badge sc">Complementar</span></td></tr>
+<tr><td><strong>IV</strong></td><td>Pesquisa direta com fornecedores</td><td>Cotação formal (ofício/e-mail), mín. 3 fornecedores</td><td>6 meses</td><td><span class="badge al">Excepcional se isolada</span></td></tr>
+<tr><td><strong>V</strong></td><td>Base de notas fiscais eletrônicas</td><td>NF-e nacional + base estadual MT</td><td>1 ano</td><td><span class="badge sc">Complementar</span></td></tr>
+</tbody></table></div>
+
+<div class="card">
+<h3>Regras Especiais — Parágrafos do Art. 46</h3>
+<div class="acc-item"><button class="acc-btn" onclick="togAcc(this)">§1º — Prioridade obrigatória dos Incisos I e II<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc-body"><div class="acc-inner"><p>Os preços públicos (sistemas oficiais e contratações similares) <strong>devem ser priorizados</strong>. Isso reflete a jurisprudência consolidada do TCU: preços públicos são mais confiáveis porque já passaram pelo crivo de processos licitatórios anteriores.</p></div></div></div>
+
+<div class="acc-item"><button class="acc-btn" onclick="togAcc(this)">§2º — Justificativa se não usar I ou II (Red. Dec. 779/2024)<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc-body"><div class="acc-inner"><p>Se <em>nenhum</em> dos parâmetros I ou II for utilizado, deve haver <strong>justificativa nos autos</strong>. Exemplo: "Não foram encontrados registros no Painel de Preços ou PNCP para o objeto específico."</p></div></div></div>
+
+<div class="acc-item"><button class="acc-btn" onclick="togAcc(this)">§2º-A — Exceção: medicamentos e produtos de saúde (Dec. 1.376/2025)<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc-body"><div class="acc-inner"><p>Para aquisições de medicamentos e produtos de saúde (atividades ordinárias da SES-MT ou decisões judiciais), admite-se o uso isolado ou cumulativo do Banco de Preços em Saúde (inciso I) e/ou tabela de referência aprovada pelo Secretário de Saúde (inciso III).</p></div></div></div>
+
+<div class="acc-item"><button class="acc-btn" onclick="togAcc(this)">§3º — Uso isolado do Inciso IV = EXCEPCIONAL<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc-body"><div class="acc-inner"><p><strong>Apenas excepcionalmente</strong> a pesquisa poderá se basear somente em cotação direta. Obrigatória a justificativa da não utilização dos demais parâmetros. O <strong>Acórdão 3569/2023 do TCU</strong> classificou como erro grosseiro essa prática sem justificativa.</p></div></div></div>
+
+<div class="acc-item"><button class="acc-btn" onclick="togAcc(this)">§4º — Requisitos formais da cotação com fornecedores<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc-body"><div class="acc-inner"><p>A proposta do fornecedor deve conter: a) descrição do objeto, valor unitário e total; b) CPF ou CNPJ; c) endereço, e-mail e telefone; d) data de emissão; e) nome do responsável. Deve-se também registrar nos autos os fornecedores que foram consultados e <em>não responderam</em>.</p></div></div></div>
+
+<div class="acc-item"><button class="acc-btn" onclick="togAcc(this)">§5º e §6º — Orçamento fora do prazo e índice de atualização<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc-body"><div class="acc-inner"><p><strong>§5º:</strong> Excepcionalmente, admite-se orçamento fora do prazo de 6 meses, desde que justificado e com índice de atualização. <strong>§6º (Dec. 216/2023):</strong> Se a licitação ocorreu há menos de 12 meses, pode-se usar o valor contratual original ou o último apostilamento como referência.</p></div></div></div>
+</div>
+
+<div class="hbox ro">
+<p><strong>⚠️ Alerta — Responsabilização:</strong> O Acórdão 2121/2024 do TCU aplicou <strong>multa de R$ 10.000</strong> a pareceristas que aprovaram edital sem orçamento detalhado. A pesquisa de preços inadequada expõe <em>toda a cadeia</em> de responsáveis.</p>
+</div>
+</section>
+
+<!-- ═══ MÓDULO 5 ═══ -->
+<section class="mod" id="m5">
+<div class="mod-hdr"><div class="mod-num">5</div><div class="mod-tg"><div class="mod-tag">Módulo 5 · Art. 47</div><h2>Metodologia para Obtenção do Preço Estimado</h2></div></div>
+
+<div class="card">
+<h3>Os 3 Métodos Estatísticos</h3>
+<p>O art. 47 autoriza três métodos, desde que incidam sobre <strong>mínimo de 3 preços</strong> válidos (dos parâmetros do art. 46), desconsiderados valores inexequíveis e excessivos:</p>
+<div class="igrid">
+<div class="iitem"><div class="iic gd">📊</div><h4>Média Aritmética</h4><p>Soma ÷ quantidade. Ideal para dados homogêneos. Sensível a outliers.</p></div>
+<div class="iitem"><div class="iic bl">📈</div><h4>Mediana</h4><p>Valor central da série ordenada. Robusta contra extremos. Ideal com grande variação.</p></div>
+<div class="iitem"><div class="iic em">💰</div><h4>Menor Valor</h4><p>Maximiza economia, mas pode gerar risco de certame deserto.</p></div>
+</div>
+<p>O <strong>§1º</strong> permite outros métodos ou menos de 3 preços, desde que justificados e aprovados pela autoridade competente.</p>
+</div>
+
+<div class="card">
+<h3>A Regra 70-30 (§3º)</h3>
+<div class="tw"><table>
+<thead><tr><th>Classificação</th><th>Critério</th><th>Consequência</th></tr></thead>
+<tbody>
+<tr><td><span class="badge al">Excessivo</span></td><td>Superior a <strong>30%</strong> da média dos demais</td><td>Desconsiderado</td></tr>
+<tr><td><span class="badge al">Inexequível</span></td><td>Inferior a <strong>70%</strong> da média dos demais</td><td>Desconsiderado</td></tr>
+</tbody></table></div>
+<p>O <strong>§4º</strong> exige declaração expressa pela área técnica quando valores forem desconsiderados, admitindo exceções justificadas.</p>
+<div class="hbox vi">
+<p><strong>§5º (Dec. 216/2023) — Exceção:</strong> Valores de <strong>atas de registro de preços</strong> e contratos da Administração em execução no último ano ficam <strong>isentos da regra de inexequibilidade</strong>. Preços públicos já foram validados por processo licitatório anterior.</p>
+</div>
+</div>
+
+<div class="cbox">
+<div class="cbox-h"><span>📋</span><h4>Caso Prático — Escolha da Metodologia</h4><span class="cbox-tag">Exemplo</span></div>
+<div class="cbox-b">
+<p><strong>Objeto:</strong> 500 resmas de papel A4.</p>
+<p><strong>Preços coletados:</strong> R$ 22,00 (Painel de Preços) · R$ 25,50 (contrato UFMT) · R$ 28,00 (fornecedor A) · R$ 27,00 (fornecedor B) · R$ 55,00 (fornecedor C).</p>
+<p><strong>Passo 1 — Regra 70-30:</strong> Média dos 4 menores = R$ 25,63. Limite 130% = R$ 33,31. O valor R$ 55,00 é excessivo → <strong>desconsiderado</strong>.</p>
+<p><strong>Passo 2 — Recálculo:</strong> Média = R$ 25,63 · Mediana = R$ 26,25 · Menor = R$ 22,00.</p>
+<p><strong>Passo 3 — Justificativa:</strong> "Optou-se pela média (R$ 25,63), pois representa o conjunto homogêneo após exclusão do preço excessivo, equilibrando economicidade e redução do risco de certame deserto."</p>
+</div>
+</div>
+</section>
+
+<!-- ═══ MÓDULO 6 ═══ -->
+<section class="mod" id="m6">
+<div class="mod-hdr"><div class="mod-num">6</div><div class="mod-tg"><div class="mod-tag">Módulo 6 · Arts. 48 a 50</div><h2>Formalização: Mapa Comparativo e Análise Crítica</h2></div></div>
+
+<div class="card">
+<h3>Art. 48 — Mapa Comparativo de Preços</h3>
+<p>A pesquisa se materializa no <strong>mapa comparativo</strong>, elaborado pela unidade requisitante, contendo:</p>
+<div class="steps">
+<div class="stp"><div class="stp-l"><div class="stp-d gd">I</div><div class="stp-c"></div></div><div class="stp-r"><h4>Descrição e Quantitativo</h4><p>Objeto a ser contratado com quantitativo preciso.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d bl">II</div><div class="stp-c"></div></div><div class="stp-r"><h4>Fontes Consultadas</h4><p>Caracterização de cada parâmetro do art. 46 utilizado.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d em">III</div><div class="stp-c"></div></div><div class="stp-r"><h4>Série de Preços Coletados</h4><p>Todos os preços obtidos, em formato comparativo.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d vi">IV</div><div class="stp-c"></div></div><div class="stp-r"><h4>Método Estatístico</h4><p>Indicação do método (média, mediana ou menor) com justificativa.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d ro">V</div><div class="stp-c"></div></div><div class="stp-r"><h4>Justificativas e Validações</h4><p>Valores desconsiderados (excessivos/inexequíveis) e fundamentação.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d am">VI-VIII</div></div><div class="stp-r"><h4>Valor Estimado, Memória de Cálculo e Assinatura</h4><p>Conclusão com valor total e identificação do servidor. <strong>Validade: 1 ano</strong> (§2º).</p></div></div>
+</div>
+<p><strong>§1º:</strong> Documentos disponíveis na internet devem ter o hiperlink indicado nos autos. Se não públicos, devem ser juntados fisicamente.</p>
+</div>
+
+<div class="card">
+<h3>Art. 49 — Responsabilidade Funcional</h3>
+<div class="hbox ro">
+<p>O(s) agente(s) público(s) autor(es) do mapa <strong>responsabiliza(m)-se funcionalmente</strong> pela informação produzida, devendo atenção aos riscos de orçamentos incompatíveis com padrões de mercado que podem culminar em aquisições não vantajosas.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Art. 50 — Análise Crítica (Segregação de Funções)</h3>
+<p>Servidor <strong>diverso</strong> do que elaborou o mapa deve formular a análise crítica, certificando:</p>
+<ul>
+<li>Que o objeto orçado possui especificação <strong>compatível</strong> com o objeto a ser licitado</li>
+<li>Que o preço é <strong>condizente</strong> com o praticado no mercado</li>
+<li>Atenção especial a <strong>grande variação</strong> entre os valores</li>
+</ul>
+<div class="hbox">
+<p><strong>Parágrafo único:</strong> Se a análise crítica indicar preço diferente do mapa, o mapa <strong>deverá ser reparado</strong> conforme a análise.</p>
+</div>
+<div class="hbox em">
+<p><strong>💡 Modelo de Análise Crítica:</strong> "Nos termos do art. 50 do Decreto 1.525/2022, CERTIFICO que o objeto orçado possui especificação compatível com o objeto da contratação, CERTIFICO ainda que seu preço está condizente com o praticado no mercado."</p>
+</div>
+</div>
+</section>
+
+<!-- ═══ MÓDULO 7 ═══ -->
+<section class="mod" id="m7">
+<div class="mod-hdr"><div class="mod-num">7</div><div class="mod-tg"><div class="mod-tag">Módulo 7 · Arts. 51 e 52</div><h2>Contratações Diretas e Inexigibilidade</h2></div></div>
+
+<div class="card">
+<h3>Art. 51 — Dispensas de Licitação</h3>
+<p>Nas contratações diretas, aplica-se o <strong>mesmo regramento</strong> dos arts. 43 a 50, quando cabível: mapa comparativo, parâmetros do art. 46, análise crítica — tudo se aplica.</p>
+<div class="hbox bl">
+<p><strong>Diferença prática:</strong> Na conclusão da pesquisa para contratação direta, certifica-se que o preço é <em>"vantajoso para a Administração"</em> (e não apenas "compatível com o mercado").</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Art. 52 — Inexigibilidade</h3>
+<p>Quando <strong>não for possível</strong> estimar o valor pelos arts. 43-50 (inviabilidade de competição), a justificativa se dará por:</p>
+<ul>
+<li><strong>Notas fiscais</strong> emitidas para outros contratantes (públicos ou privados)</li>
+<li><strong>Contratos, empenhos, extratos contratuais</strong> e documentos equivalentes</li>
+<li>Emitidos no período de até <strong>1 ano</strong> anterior à data da pesquisa</li>
+<li>Ou por <strong>outro meio idôneo</strong>, devidamente justificado</li>
+</ul>
+<div class="lbox">
+<div class="lbox-lb">📖 Art. 52, Parágrafo Único</div>
+<p>"Excepcionalmente, caso a futura contratada <strong>não tenha comercializado</strong> o objeto anteriormente, a justificativa poderá ser realizada com <strong>objetos semelhantes de mesma natureza</strong>, devendo constar demonstração de que as especificações técnicas apresentam <strong>similaridade</strong> com o objeto pretendido."</p>
+</div>
+</div>
+
+<div class="cbox">
+<div class="cbox-h"><span>🔬</span><h4>Caso Prático — Manutenção de Equipamento Forense</h4><span class="cbox-tag">Inexigibilidade</span></div>
+<div class="cbox-b">
+<p><strong>Situação:</strong> A POLITEC-MT precisa contratar manutenção preventiva de 02 comparadores balísticos Leica, modelo FSM. Apenas o representante autorizado pode realizar o serviço.</p>
+<p><strong>Enquadramento:</strong> Inexigibilidade (art. 74, I, Lei 14.133/2021).</p>
+<p><strong>Pesquisa de Preços (Art. 52):</strong> O fornecedor apresentou notas fiscais de serviços idênticos prestados a outros órgãos, comprovando preço de R$ 19.980,00/un/ano.</p>
+<p><strong>Resultado:</strong> Contrato nº 265/2024/SESP — CMK Serviços. Valor total: R$ 39.960,00 (02 equipamentos × 02 anos), comprovando compatibilidade com o mercado.</p>
+</div>
+</div>
+</section>
+
+<!-- ═══ MÓDULO 8 ═══ -->
+<section class="mod" id="m8">
+<div class="mod-hdr"><div class="mod-num">8</div><div class="mod-tg"><div class="mod-tag">Módulo 8 · Avaliação</div><h2>Checklist, Exercícios e Quiz Final</h2></div></div>
+
+<div class="card">
+<h3>Checklist Operacional Completo</h3>
+<div class="steps">
+<div class="stp"><div class="stp-l"><div class="stp-d gd">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>1. Consultou sistemas oficiais (inciso I)?</h4><p>Painel de Preços, PNCP, Banco de Preços em Saúde, Radar TCE-MT.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d gd">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>2. Verificou contratações similares (inciso II)?</h4><p>Contratos e atas vigentes de até 1 ano, com atualização de índices se necessário.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d bl">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>3. Se não usou I ou II, justificou nos autos?</h4><p>Obrigatório pelo §2º do art. 46.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d em">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>4. Obteve mínimo de 3 preços válidos?</h4><p>Após regra 70-30, restam ao menos 3? Se não, justificar (§1º art. 47).</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d vi">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>5. Aplicou e documentou a regra 70-30?</h4><p>Excessivos (>130% média) e inexequíveis (<70% média) desconsiderados e declarados.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d ro">✓</div><div class="stp-c"></div></div><div class="stp-r"><h4>6. Justificou a metodologia escolhida?</h4><p>Média, mediana ou menor — com fundamentação técnica.</p></div></div>
+<div class="stp"><div class="stp-l"><div class="stp-d am">✓</div></div><div class="stp-r"><h4>7. Análise crítica por servidor diverso?</h4><p>Art. 50 — segregação de funções, certificação de compatibilidade e condizência.</p></div></div>
+</div>
+</div>
+
+<!-- QUIZ 1 -->
+<div class="qcard" id="q1">
+<div class="qlb">🎯 Questão 1 de 5</div>
+<h4>Priorização de Parâmetros</h4>
+<p class="qq">Segundo o art. 46, §1º do Decreto 1.525/2022, quais parâmetros devem ser priorizados na pesquisa de preços?</p>
+<div class="qopts">
+<div class="qopt" onclick="chk('q1',this,0)"><span class="ol">A</span> Incisos III e IV — mídias e fornecedores</div>
+<div class="qopt" onclick="chk('q1',this,1)"><span class="ol">B</span> Incisos I e II — sistemas oficiais e contratações similares</div>
+<div class="qopt" onclick="chk('q1',this,0)"><span class="ol">C</span> Incisos IV e V — fornecedores e NF-e</div>
+<div class="qopt" onclick="chk('q1',this,0)"><span class="ol">D</span> Qualquer inciso, sem prioridade</div>
+</div>
+<div class="qfb ok" id="q1ok">✅ <strong>Correto!</strong> O §1º prioriza incisos I e II (preços públicos), conforme a "cesta de preços" do TCU.</div>
+<div class="qfb no" id="q1no">❌ <strong>Incorreto.</strong> Resposta: B. O Decreto prioriza preços públicos por serem mais confiáveis.</div>
+</div>
+
+<!-- QUIZ 2 -->
+<div class="qcard" id="q2">
+<div class="qlb">🎯 Questão 2 de 5</div>
+<h4>Regra de Preços Excessivos</h4>
+<p class="qq">São considerados excessivos os preços superiores a qual percentual da média dos demais?</p>
+<div class="qopts">
+<div class="qopt" onclick="chk('q2',this,0)"><span class="ol">A</span> 50% da média</div>
+<div class="qopt" onclick="chk('q2',this,0)"><span class="ol">B</span> 20% da média</div>
+<div class="qopt" onclick="chk('q2',this,1)"><span class="ol">C</span> 30% da média</div>
+<div class="qopt" onclick="chk('q2',this,0)"><span class="ol">D</span> 25% da média</div>
+</div>
+<div class="qfb ok" id="q2ok">✅ <strong>Correto!</strong> Art. 47, §3º, I: superiores a 30% da média = excessivos (>130%). Inexequíveis: <70%.</div>
+<div class="qfb no" id="q2no">❌ <strong>Incorreto.</strong> Resposta: C. A regra "70-30": inexequíveis abaixo de 70%, excessivos acima de 130%.</div>
+</div>
+
+<!-- QUIZ 3 -->
+<div class="qcard" id="q3">
+<div class="qlb">🎯 Questão 3 de 5</div>
+<h4>Análise Crítica</h4>
+<p class="qq">Quem deve realizar a análise crítica do mapa comparativo (art. 50)?</p>
+<div class="qopts">
+<div class="qopt" onclick="chk('q3',this,0)"><span class="ol">A</span> O mesmo servidor que elaborou o mapa</div>
+<div class="qopt" onclick="chk('q3',this,1)"><span class="ol">B</span> Servidor diverso do que o elaborou</div>
+<div class="qopt" onclick="chk('q3',this,0)"><span class="ol">C</span> A assessoria jurídica</div>
+<div class="qopt" onclick="chk('q3',this,0)"><span class="ol">D</span> O agente de contratação</div>
+</div>
+<div class="qfb ok" id="q3ok">✅ <strong>Correto!</strong> Art. 50 exige servidor diverso — segregação de funções.</div>
+<div class="qfb no" id="q3no">❌ <strong>Incorreto.</strong> Resposta: B. Quem elabora não pode ser quem revisa.</div>
+</div>
+
+<!-- QUIZ 4 -->
+<div class="qcard" id="q4">
+<div class="qlb">🎯 Questão 4 de 5</div>
+<h4>Inexigibilidade</h4>
+<p class="qq">Quando o fornecedor nunca comercializou o objeto, como se justifica o preço na inexigibilidade (art. 52)?</p>
+<div class="qopts">
+<div class="qopt" onclick="chk('q4',this,0)"><span class="ol">A</span> Dispensa-se a justificativa</div>
+<div class="qopt" onclick="chk('q4',this,0)"><span class="ol">B</span> Usa-se apenas a proposta do fornecedor</div>
+<div class="qopt" onclick="chk('q4',this,1)"><span class="ol">C</span> Compara-se com objetos semelhantes, demonstrando similaridade técnica</div>
+<div class="qopt" onclick="chk('q4',this,0)"><span class="ol">D</span> A autoridade competente define o preço livremente</div>
+</div>
+<div class="qfb ok" id="q4ok">✅ <strong>Correto!</strong> Art. 52, parágrafo único: objetos semelhantes com demonstração de similaridade técnica.</div>
+<div class="qfb no" id="q4no">❌ <strong>Incorreto.</strong> Resposta: C. Mesmo na inexigibilidade, a justificativa de preço é obrigatória.</div>
+</div>
+
+<!-- QUIZ 5 -->
+<div class="qcard" id="q5">
+<div class="qlb">🎯 Questão 5 de 5</div>
+<h4>Validade do Mapa</h4>
+<p class="qq">Qual a validade do mapa comparativo de preços segundo o art. 48, §2º?</p>
+<div class="qopts">
+<div class="qopt" onclick="chk('q5',this,0)"><span class="ol">A</span> 6 meses</div>
+<div class="qopt" onclick="chk('q5',this,1)"><span class="ol">B</span> 1 ano a contar da assinatura</div>
+<div class="qopt" onclick="chk('q5',this,0)"><span class="ol">C</span> 2 anos</div>
+<div class="qopt" onclick="chk('q5',this,0)"><span class="ol">D</span> Sem prazo definido</div>
+</div>
+<div class="qfb ok" id="q5ok">✅ <strong>Correto!</strong> O mapa tem validade de 1 (um) ano a contar da data de sua assinatura.</div>
+<div class="qfb no" id="q5no">❌ <strong>Incorreto.</strong> Resposta: B. Art. 48, §2º: validade de 1 ano da data de assinatura.</div>
+</div>
+
+<!-- SCORE -->
+<div class="card" id="scoreCard" style="display:none;text-align:center;">
+<h3>🏆 Resultado Final</h3>
+<p style="font-size:2.5rem;font-weight:900;font-family:var(--fd);color:var(--gold);margin:16px 0;" id="scoreVal"></p>
+<p id="scoreMsg"></p>
+</div>
+
+<!-- NAV BUTTONS -->
+<div class="nav-btns">
+<button class="nbtn nbtn-back" onclick="backToHero()">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+Voltar ao Início
+</button>
+<button class="nbtn nbtn-fwd" onclick="goFinale()">
+Encerramento
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</button>
+</div>
+
+</main>
+
+<!-- ═══ FINALE PAGE ═══ -->
+<section class="finale" id="finalePage">
+<div class="finale-bg"></div>
+<div class="finale-stars" id="finaleStars"></div>
+<div class="finale-content">
+  <div class="finale-icon">⚖️</div>
+  <div class="finale-label">Encerramento</div>
+  <h2 class="finale-title">A pesquisa de preços como instrumento de cidadania</h2>
+  <div class="finale-divider"></div>
+  
+  <p class="finale-quote">Maior autonomia implica maior responsabilidade. Planejamento e governança pública são conceitos nucleares da nova Lei para nortear a atividade administrativa relacionada com licitação e contratação administrativa.</p>
+  <p class="finale-author">Marçal Justen Filho</p>
+  <p class="finale-author-desc">Jurista, Professor Titular da UFPR e do IDP.<br><em>Comentários à Lei de Licitações e Contratações Administrativas</em> — 2ª ed., 2024.</p>
+
+  <div class="finale-sources">
+    <h4>Fontes e Referências Normativas</h4>
+    <p><strong>Legislação:</strong> Lei Federal 14.133/2021 (art. 23) · Decreto Estadual MT 1.525/2022 (arts. 43–52) · Dec. 216/2023 · Dec. 779/2024 · Dec. 1.376/2025 · IN SEGES/ME 65/2021 · LC Estadual MT 605/2018.</p>
+    <p style="margin-top:8px"><strong>Jurisprudência:</strong> TCU — Acórdãos 1875/2021-Plenário · 2816/2014-Plenário · 3569/2023-2ª Câmara · 2121/2024-Plenário · 4958/2022-1ª Câmara.</p>
+    <p style="margin-top:8px"><strong>Doutrina:</strong> JUSTEN FILHO, Marçal. <em>Comentários à Lei de Licitações e Contratações Administrativas</em>. 2ª ed. RT, 2024 · Manual de Pesquisa de Preços do STJ (2021) · Caderno de Logística — Pesquisa de Preços (Gov.br).</p>
+  </div>
+
+  <div class="finale-home">
+    <div class="nav-btns">
+      <button class="nbtn nbtn-back" onclick="backToHero()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar ao Início
+      </button>
+      <button class="nbtn nbtn-back" onclick="backToCourse()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Rever Conteúdo
+      </button>
+    </div>
+  </div>
+
+  <div class="finale-credit">
+    <p>Iohan Camões — POLITEC/MT</p>
+  </div>
+</div>
+</section>
+
+<script>
+// ── STATE ──
+let score=0, answered=0, total=5;
+
+// ── START COURSE ──
+function startCourse(){
+  document.getElementById('hero').style.display='none';
+  document.getElementById('finalePage').classList.remove('act');
+  document.getElementById('mainContent').classList.add('act');
+  document.getElementById('topNav').classList.add('vis');
+  document.getElementById('sDots').classList.add('vis');
+  window.scrollTo(0,0);
+  observeModules();
+}
+
+// ── BACK TO HERO ──
+function backToHero(){
+  document.getElementById('hero').style.display='';
+  document.getElementById('mainContent').classList.remove('act');
+  document.getElementById('finalePage').classList.remove('act');
+  document.getElementById('topNav').classList.remove('vis');
+  document.getElementById('sDots').classList.remove('vis');
+  window.scrollTo(0,0);
+}
+
+// ── GO TO FINALE ──
+function goFinale(){
+  document.getElementById('mainContent').classList.remove('act');
+  document.getElementById('topNav').classList.remove('vis');
+  document.getElementById('sDots').classList.remove('vis');
+  document.getElementById('finalePage').classList.add('act');
+  window.scrollTo(0,0);
+  createStars();
+}
+
+// ── BACK TO COURSE ──
+function backToCourse(){
+  document.getElementById('finalePage').classList.remove('act');
+  document.getElementById('mainContent').classList.add('act');
+  document.getElementById('topNav').classList.add('vis');
+  document.getElementById('sDots').classList.add('vis');
+  window.scrollTo(0,0);
+}
+
+// ── SCROLL TO MODULE ──
+function goMod(n){document.getElementById('m'+n).scrollIntoView({behavior:'smooth'})}
+
+// ── ACCORDION ──
+function togAcc(btn){btn.closest('.acc-item').classList.toggle('open')}
+
+// ── QUIZ CHECK ──
+function chk(id,el,correct){
+  const card=document.getElementById(id);
+  if(card.dataset.done) return;
+  card.dataset.done='1';
+  answered++;
+  const opts=card.querySelectorAll('.qopt');
+  opts.forEach(o=>o.style.pointerEvents='none');
+  if(correct){
+    el.classList.add('ok');
+    document.getElementById(id+'ok').classList.add('sh');
+    score++;
+  } else {
+    el.classList.add('no');
+    document.getElementById(id+'no').classList.add('sh');
+    opts.forEach(o=>{if(o.onclick.toString().includes(',1)')){o.classList.add('ok')}});
+  }
+  if(answered===total) showScore();
+}
+
+function showScore(){
+  const card=document.getElementById('scoreCard');
+  card.style.display='block';
+  const pct=Math.round(score/total*100);
+  document.getElementById('scoreVal').textContent=score+'/'+total+' ('+pct+'%)';
+  const msg=pct>=80?'🎉 Excelente! Você domina os fundamentos da pesquisa de preços.':pct>=60?'👍 Bom resultado! Revise os módulos com atenção nos pontos que errou.':'📚 Recomendamos revisar o conteúdo antes de aplicar na prática.';
+  document.getElementById('scoreMsg').textContent=msg;
+  card.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ── INTERSECTION OBSERVER ──
+function observeModules(){
+  const mods=document.querySelectorAll('.mod');
+  const dots=document.querySelectorAll('.sdot');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        const idx=Array.from(mods).indexOf(e.target);
+        dots.forEach((d,i)=>d.classList.toggle('act',i===idx));
+        document.getElementById('navMl').textContent='Módulo '+(idx+1)+' de 8';
+        document.getElementById('navPb').style.width=((idx+1)/8*100)+'%';
+      }
+    });
+  },{threshold:0.15,rootMargin:'-60px 0px'});
+  mods.forEach(m=>io.observe(m));
+}
+
+// ── FINALE STARS ──
+function createStars(){
+  const c=document.getElementById('finaleStars');
+  if(c.children.length>0) return;
+  for(let i=0;i<40;i++){
+    const s=document.createElement('div');
+    s.className='finale-star';
+    s.style.left=Math.random()*100+'%';
+    s.style.top=Math.random()*100+'%';
+    s.style.animationDuration=(2+Math.random()*4)+'s';
+    s.style.animationDelay=Math.random()*3+'s';
+    s.style.width=s.style.height=(1+Math.random()*2)+'px';
+    c.appendChild(s);
+  }
+}
+</script>
+</body>
+</html>
